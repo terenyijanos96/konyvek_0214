@@ -59,6 +59,7 @@ Route::delete('reservations/{book_id}/{user_id}/{start}', [ReservationController
 
 
 Route::get('author_with_more_books', [BookController::class, 'authorWithMoreBooks']); 
+Route::get('brought_back_on/{date}', [LendingController::class, 'broughtBackOn']); 
 
 //egyéb végpontok
 Route::patch('user_update_password/{id}', [UserController::class, 'updatePassword']);
