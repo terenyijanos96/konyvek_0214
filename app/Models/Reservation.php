@@ -19,9 +19,9 @@ class Reservation extends Model
     }
 
     protected $fillable = [
-        // 'book_id',
-        // 'user_id',
-        // 'start',
+        'book_id',
+        'user_id',
+        'start',
         'message',
     ];
 }

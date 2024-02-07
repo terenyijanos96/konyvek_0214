@@ -22,7 +22,7 @@ class ReservationFactory extends Factory
         $repeats = 10;
         do {
             $user_id = User::all()->random()->id;
-            $book_id = Book::all()->random()->item_id;
+            $book_id = Book::all()->random()->book_id;
             $start = fake()->date();
             $reservation = Reservation::where('user_id', $user_id)
                 ->where('book_id', $book_id)

@@ -46,4 +46,15 @@ class BookController extends Controller
         
         return $copies;
     }
+
+    public function authorWithMoreBooks(){
+        $books = DB::table('books as b')
+
+        ->selectRaw('b.author, count(*)')->
+        groupBy('b.author')->
+        having('count(*)', '>',  0)->
+        get();
+
+        return $books;
+    }
 }
