@@ -77,4 +77,16 @@ class LendingController extends Controller
             ->join('books as b', 'c.book_id', 'b.book_id')
             ->where('end', $date)->get();
     }
+
+    public function bringBack($copy_id, $start){
+        $user = Auth::user();
+        $lending = $this->show($user->id, $copy_id, $start);
+        $lending->end = date(now());
+
+        $lending->save();
+
+        DB::table('copies')
+        ->where('copy_id', $copy_id)
+        ->update(['status' => 0]);
+    }
 }

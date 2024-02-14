@@ -39,6 +39,10 @@ Route::middleware('auth.basic')->group(function () {
     Route::get('title_count/{title}', [BookController::class, 'titleCount']);
     Route::get('h_author_title/{hardcovered}', [CopyController::class, 'hAuthorTitle']);
     Route::get('ev/{year}', [CopyController::class, 'ev']);
+    //2 tábla módosítása egyszerre
+    Route::patch('bring-back/{copy_id}/{start}', [LendingController::class, 'bringBack']);
+    //TRIGGER
+    Route::post('lendings', [LendingController::class, 'store']);
 });
 
 //guest is láthatja
@@ -48,7 +52,7 @@ Route::apiResource('/books', BookController::class);
 Route::get('lendings', [LendingController::class, 'index']);
 Route::get('lendings/{user_id}/{copy_id}/{start}', [LendingController::class, 'show']);
 //Route::put('/lendings/{user_id}/{copy_id}/{start}', [LendingController::class, 'update']);
-Route::post('lendings', [LendingController::class, 'store']);
+
 Route::delete('lendings/{user_id}/{copy_id}/{start}', [LendingController::class, 'destroy']); 
 
 Route::get('reservations', [ReservationController::class, 'index']);
