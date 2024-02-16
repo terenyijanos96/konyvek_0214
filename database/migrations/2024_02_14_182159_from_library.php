@@ -12,12 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // DB::unprepared('CREATE TRIGGER fromLibrary AFTER INSERT ON 
-        // lendings
-        // FOR EACH ROW
-        // BEGIN
-        //     UPDATE copies SET status = 1 WHERE copy_id = NEW.copy_id;
-        // END');
+        DB::unprepared('CREATE TRIGGER fromLibrary AFTER INSERT ON 
+        lendings
+        FOR EACH ROW
+        BEGIN
+             UPDATE copies SET status = 1 WHERE copy_id = NEW.copy_id;
+        END');
     }
 
     /**
